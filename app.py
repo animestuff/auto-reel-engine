@@ -44,12 +44,12 @@ def generate():
 
     script = generate_script(topic, length, tone)
 
-return jsonify({
-    "script": script,
-    "topic": topic,
-    "length": length,
-    "tone": tone
-})
+    return jsonify({
+        "script": script,
+        "topic": topic,
+        "length": length,
+        "tone": tone
+    })
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
