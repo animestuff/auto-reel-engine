@@ -7,28 +7,29 @@ CORS(app)
 
 
 def generate_script(topic, length, tone):
-      if tone == "aggressive":
+    if tone == "aggressive":
         prefix = "Listen carefully. "
-      elif tone == "calm":
+    elif tone == "calm":
         prefix = "Think about this. "
-      elif tone == "dark":
+    elif tone == "dark":
         prefix = "Here’s the uncomfortable truth. "
-      elif tone == "luxury":
+    elif tone == "luxury":
         prefix = "High performers understand this. "
-      else:
+    else:
         prefix = ""
-        
-      if length == "short":
+
+    if length == "short":
         return prefix + f"{topic.capitalize()} shapes your future. Act now."
 
-     elif length == "medium":
+    elif length == "medium":
         return prefix + f"You say you want success in {topic}, but your habits say otherwise. Discipline creates results. Fix your focus."
 
-     elif length == "long":
+    elif length == "long":
         return prefix + f"Most people blame {topic} for their failures. But the truth is, growth begins when you stop avoiding discomfort. Master your habits. Control your emotions. Build discipline daily."
 
-     else:
+    else:
         return prefix + f"{topic.capitalize()} determines your direction. Choose wisely."
+
 
 @app.route("/")
 def home():
