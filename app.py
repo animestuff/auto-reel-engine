@@ -41,13 +41,16 @@ def home():
 def generate():
     data = request.json
     topic = data.get("topic", "success")
+    length = data.get("length", "short")
 
-    script = generate_script(topic)
+    script = generate_script(topic, length)
 
     return jsonify({
+        "script": script,
         "topic": topic,
-        "script": script
+        "length": length
     })
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
