@@ -6,32 +6,18 @@ app = Flask(__name__)
 CORS(app)
 
 
-def generate_script(topic):
-    hooks = [
-        f"Stop blaming {topic}.",
-        f"You’re not bad at {topic}. You’re undisciplined.",
-        f"Nobody talks about this in {topic}."
-    ]
+def generate_script(topic, length):
+    if length == "short":
+        return f"{topic.capitalize()} shapes your future. Act now."
 
-    tension = [
-        f"You say you want results in {topic}, but your habits say otherwise.",
-        f"You complain about {topic}, yet repeat the same mistakes.",
-        f"You want success in {topic}, but avoid discomfort."
-    ]
+    elif length == "medium":
+        return f"You say you want success in {topic}, but your habits say otherwise. Discipline creates results. Fix your focus."
 
-    truth = [
-        f"{topic.capitalize()} rewards discipline, not emotion.",
-        f"{topic.capitalize()} exposes who you really are.",
-        f"{topic.capitalize()} doesn’t care about your excuses."
-    ]
+    elif length == "long":
+        return f"Most people blame {topic} for their failures. But the truth is, growth begins when you stop avoiding discomfort. Master your habits. Control your emotions. Build discipline daily."
 
-    command = [
-        "Fix your habits.",
-        "Choose growth over comfort.",
-        "Decide who you want to become."
-    ]
-
-    return f"{random.choice(hooks)} {random.choice(tension)} {random.choice(truth)} {random.choice(command)}"
+    else:
+        return f"{topic.capitalize()} determines your direction. Choose wisely."
 
 @app.route("/")
 def home():
