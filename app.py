@@ -9,13 +9,13 @@ CORS(app)
 def generate_script(topic, length, tone):
       if tone == "aggressive":
         prefix = "Listen carefully. "
-    elif tone == "calm":
+      elif tone == "calm":
         prefix = "Think about this. "
-    elif tone == "dark":
+      elif tone == "dark":
         prefix = "Here’s the uncomfortable truth. "
-    elif tone == "luxury":
+      elif tone == "luxury":
         prefix = "High performers understand this. "
-    else:
+      else:
         prefix = ""
         
    if length == "short":
