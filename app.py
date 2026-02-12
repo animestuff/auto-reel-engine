@@ -8,24 +8,30 @@ CORS(app)
 
 def generate_script(topic):
     hooks = [
-        f"You think {topic} is the problem.",
-        f"Nobody tells you the truth about {topic}.",
-        f"If you ignore {topic}, you stay average.",
+        f"Stop blaming {topic}.",
+        f"You’re not bad at {topic}. You’re undisciplined.",
+        f"Nobody talks about this in {topic}."
     ]
 
-    bodies = [
-        f"The way you approach {topic} decides your future.",
-        f"Most people misunderstand {topic}, and that’s why they fail.",
-        f"Mastering {topic} separates winners from watchers.",
+    tension = [
+        f"You say you want results in {topic}, but your habits say otherwise.",
+        f"You complain about {topic}, yet repeat the same mistakes.",
+        f"You want success in {topic}, but avoid discomfort."
     ]
 
-    endings = [
-        "Change your mindset. Change your life.",
-        "Start today. Or stay stuck.",
-        "The choice is yours.",
+    truth = [
+        f"{topic.capitalize()} rewards discipline, not emotion.",
+        f"{topic.capitalize()} exposes who you really are.",
+        f"{topic.capitalize()} doesn’t care about your excuses."
     ]
 
-    return f"{random.choice(hooks)} {random.choice(bodies)} {random.choice(endings)}"
+    command = [
+        "Fix your habits.",
+        "Choose growth over comfort.",
+        "Decide who you want to become."
+    ]
+
+    return f"{random.choice(hooks)} {random.choice(tension)} {random.choice(truth)} {random.choice(command)}"
 
 @app.route("/")
 def home():
