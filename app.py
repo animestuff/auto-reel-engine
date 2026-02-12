@@ -18,17 +18,17 @@ def generate_script(topic, length, tone):
       else:
         prefix = ""
         
-   if length == "short":
-    return prefix + f"{topic.capitalize()} shapes your future. Act now."
+      if length == "short":
+        return prefix + f"{topic.capitalize()} shapes your future. Act now."
 
-elif length == "medium":
-    return prefix + f"You say you want success in {topic}, but your habits say otherwise. Discipline creates results. Fix your focus."
+     elif length == "medium":
+        return prefix + f"You say you want success in {topic}, but your habits say otherwise. Discipline creates results. Fix your focus."
 
-elif length == "long":
-    return prefix + f"Most people blame {topic} for their failures. But the truth is, growth begins when you stop avoiding discomfort. Master your habits. Control your emotions. Build discipline daily."
+     elif length == "long":
+        return prefix + f"Most people blame {topic} for their failures. But the truth is, growth begins when you stop avoiding discomfort. Master your habits. Control your emotions. Build discipline daily."
 
-else:
-    return prefix + f"{topic.capitalize()} determines your direction. Choose wisely."
+     else:
+        return prefix + f"{topic.capitalize()} determines your direction. Choose wisely."
 
 @app.route("/")
 def home():
