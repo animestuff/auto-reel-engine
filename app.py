@@ -54,7 +54,6 @@ def generate_script(topic, length, tone, intensity):
         identity = f"If you say {topic} matters,"
         tension = "your daily behavior is proving otherwise."
         resolution = f"{topic_cap} is earned in silence, not declared in public."
-
     elif intensity == "high":
          identity = f"If you're serious about {topic},"
          tension = "your habits are exposing you."
