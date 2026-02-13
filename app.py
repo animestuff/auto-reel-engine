@@ -78,7 +78,8 @@ def generate_script(topic, length, tone, intensity):
         ])
 
     # ---------- SELECT HOOK ----------
-    selected_hook = random.choice(hooks[intensity])
+    selected_hook = random.choice(hook_bank.get(intensity, hook_bank["dark"]))
+
 
     # ---------- LOOP LINE ----------
     loop_line = random.choice([
