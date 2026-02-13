@@ -29,7 +29,7 @@ def generate_script(topic, length, tone):
         cta = "Fix your focus."
 
     elif length == "long":
-        hook = prefix + "Here’s the uncomfortable truth."
+        hook = prefix 
         body = f"Most people blame {topic} for their failures. But growth begins when you stop avoiding discomfort."
         cta = "Master your habits."
 
