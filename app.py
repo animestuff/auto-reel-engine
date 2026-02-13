@@ -13,6 +13,7 @@ def generate_script(topic, length, tone, intensity):
 
     topic_cap = topic.capitalize()
 
+    # ---------- HOOK BANK ----------
     hook_bank = {
         "aggressive": [
             "Stop lying to yourself.",
@@ -36,7 +37,7 @@ def generate_script(topic, length, tone, intensity):
             "Top 1% think differently.",
             "High performers understand this.",
             "Winners move differently.",
-            "Elite mindset only."
+            "Elite standards create elite results."
         ],
         "viral": [
             "Stop lying to yourself.",
@@ -44,50 +45,41 @@ def generate_script(topic, length, tone, intensity):
             "Nobody wants to admit this.",
             "You're avoiding the real problem.",
             "Wake up."
-       ],
-
+        ]
     }
 
-    selected_hook = random.choice(hook_bank.get(tone, ["Listen carefully."]))
+    # Force viral tone if intensity is viral
+    if intensity == "viral":
+        tone = "viral"
 
-    identity_triggers = [
-        f"If you care about {topic},",
-        f"If you're serious about improving {topic},",
-        f"If you truly want success in {topic},",
-        f"If you're tired of staying average in {topic},"
-    ]
+    selected_hook = random.choice(hook_bank.get(tone, hook_bank["dark"]))
 
-    identity = random.choice(identity_triggers)
+    # ---------- IDENTITY ----------
+    identity = f"If you care about {topic},"
 
-    # Stronger emotional tension
-    tension_bank = [
-        "your actions don’t match your goals.",
-        "you keep choosing comfort over growth.",
-        "you say one thing but do another.",
-        "you avoid what matters most.",
-        "your habits are exposing you."
-    ]
+    # ---------- TENSION ----------
+    if intensity == "viral":
+        tension = f"You say you want {topic}, but your actions say otherwise."
+    else:
+        tension = "your actions don’t match your goals."
 
-    tension = random.choice(tension_bank)
+    # ---------- RESOLUTION ----------
+    if intensity == "viral":
+        resolution = f"{topic_cap} doesn't reward comfort."
+    else:
+        resolution = f"{topic_cap} decides your future."
 
-    resolution_bank = [
-        "Growth begins when discomfort becomes normal.",
-        "Consistency beats motivation every time.",
-        "Discipline decides your future.",
-        "Your identity shapes your destiny."
-    ]
+    # ---------- CTA ----------
+    if intensity == "viral":
+        cta = "Decide who you are."
+    else:
+        cta = random.choice([
+            "Fix it today.",
+            "Start acting differently.",
+            "Decide who you want to become."
+        ])
 
-    resolution = random.choice(resolution_bank)
-
-    cta_bank = [
-        "Fix it today.",
-        "Start acting differently.",
-        "Decide who you want to become.",
-        "Or stay the same."
-    ]
-
-    cta = random.choice(cta_bank)
-
+    # ---------- LOOP LINE ----------
     loop_line = random.choice([
         "Read that again.",
         "Let that sink in.",
@@ -95,13 +87,14 @@ def generate_script(topic, length, tone, intensity):
         "Now ask yourself why."
     ])
 
+    # ---------- SCRIPT STRUCTURE ----------
     if length == "short":
         full_script = f"{selected_hook} {resolution} {cta}"
 
     elif length == "medium":
         full_script = f"{selected_hook} {identity} {tension} {resolution} {cta} {loop_line}"
 
-    else:
+    else:  # long
         full_script = f"{selected_hook} {identity} {tension} {resolution} {cta} {loop_line}"
 
     hashtags = list(set([
@@ -120,9 +113,6 @@ def generate_script(topic, length, tone, intensity):
         "full_script": full_script,
         "hashtags": hashtags
     }
-
-
-
 
 
 @app.route("/")
