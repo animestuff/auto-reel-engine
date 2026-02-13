@@ -67,15 +67,22 @@ def generate_script(topic, length, tone, intensity):
         tension = "you avoid what matters most."
         resolution = f"{topic_cap} shapes your future."
 
-    # ---------- CTA ----------
-     if intensity == "viral":
+       # -------- CTA --------
+    if intensity == "viral":
         cta = random.choice([
             "Decide who you are.",
             "Prove it.",
             "Choose better.",
             "Or stay average.",
             "Now act."
-    ])
+        ])
+    else:
+        cta = random.choice([
+            "Fix it today.",
+            "Start acting differently.",
+            "Decide who you want to become."
+        ])
+
 
 
     # ---------- LOOP LINE ----------
