@@ -77,7 +77,7 @@ def generate_script(topic, length, tone, intensity):
             "Decide who you want to become."
         ])
 
-    # -------- LOOP LINE --------
+    # ---------- LOOP LINE ----------
     loop_line = random.choice([
         "Read that again.",
         "Let that sink in.",
@@ -85,8 +85,9 @@ def generate_script(topic, length, tone, intensity):
         "Now ask yourself why."
     ])
 
+    # ---------- SELECT HOOK ----------
+    selected_hook = random.choice(hooks[intensity])
 
-selected_hook = random.choice(hooks[intensity])
     # ---------- SCRIPT STRUCTURE ----------
     if length == "short":
         full_script = f"{selected_hook} {resolution} {cta}"
@@ -96,6 +97,7 @@ selected_hook = random.choice(hooks[intensity])
 
     else:  # long
         full_script = f"{selected_hook} {identity} {tension} {resolution} {cta} {loop_line}"
+
 
     hashtags = list(set([
         f"#{topic.lower()}",
