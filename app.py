@@ -78,7 +78,12 @@ def generate_script(topic, length, tone, intensity):
         ])
 
     # ---------- SELECT HOOK ----------
-    selected_hook = random.choice(hook_bank.get(intensity, hook_bank["dark"]))
+    # Fallback safety
+    if tone not in hook_bank:
+        tone = "dark"
+
+    selected_hook = random.choice(hook_bank[tone])
+
 
 
     # ---------- LOOP LINE ----------
