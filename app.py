@@ -8,7 +8,7 @@ CORS(app)
 
 import random
 
-def generate_script(topic, length, tone):
+def generate_script(topic, length, tone, intensity):
     import random
 
     topic_cap = topic.capitalize()
@@ -118,8 +118,11 @@ def generate():
     topic = data.get("topic", "success")
     length = data.get("length", "short")
     tone = data.get("tone", "default")
+    intensity = data.get("intensity", "medium")
+   
 
-    script = generate_script(topic, length, tone)
+
+   script = generate_script(topic, length, tone, intensity)
     return jsonify(script)
 
 if __name__ == "__main__":
