@@ -80,12 +80,21 @@ def generate_script(topic, length, tone, intensity):
 
     cta = random.choice(cta_bank)
 
+      loop_line = random.choice([
+        "Read that again.",
+        "Let that sink in.",
+        "Think about that.",
+        "Now ask yourself why."
+    ])
+
     if length == "short":
         full_script = f"{selected_hook} {resolution} {cta}"
+
     elif length == "medium":
-        full_script = f"{selected_hook} {identity} {tension} {resolution} {cta}"
+        full_script = f"{selected_hook} {identity} {tension} {resolution} {cta} {loop_line}"
+
     else:
-        full_script = f"{selected_hook} {identity} {tension} {resolution} {cta} Read that again."
+        full_script = f"{selected_hook} {identity} {tension} {resolution} {cta} {loop_line}"
 
     hashtags = list(set([
         f"#{topic.lower()}",
