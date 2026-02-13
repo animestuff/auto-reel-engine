@@ -80,7 +80,7 @@ def generate_script(topic, length, tone, intensity):
 
     cta = random.choice(cta_bank)
 
-      loop_line = random.choice([
+    loop_line = random.choice([
         "Read that again.",
         "Let that sink in.",
         "Think about that.",
