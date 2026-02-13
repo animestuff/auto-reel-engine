@@ -18,17 +18,33 @@ def generate_script(topic, length, tone):
     else:
         prefix = ""
 
-    if length == "short":
-        return prefix + f"{topic.capitalize()} shapes your future. Act now."
+   if length == "short":
+       hook = prefix + f"{topic.capitalize()} shapes your future."
+       body = "Your habits decide your results."
+       cta = "Act now."
+   elif length == "medium":
+       hook = prefix + f"You say you want success in {topic}."
+       body = "But your habits say otherwise. Discipline creates results."
+       cta = "Fix your focus."
+   elif length == "long":
+       hook = prefix + f"Here’s the uncomfortable truth."
+       body = f"Most people blame {topic} for their failures. But growth begins when you stop avoiding discomfort."
+       cta = "Master your habits."
+   else:
+       hook = prefix + f"{topic.capitalize()} determines your direction."
+       body = "Choose wisely."
+       cta = "Start today."
 
-    elif length == "medium":
-        return prefix + f"You say you want success in {topic}, but your habits say otherwise. Discipline creates results. Fix your focus."
+   full_script = f"{hook} {body} {cta}"
 
-    elif length == "long":
-        return prefix + f"Most people blame {topic} for their failures. But the truth is, growth begins when you stop avoiding discomfort. Master your habits. Control your emotions. Build discipline daily."
+   return {
+     "hook": hook,
+     "body": body,
+     "cta": cta,
+     "full_script": full_script,
+     "hashtags": [f"#{topic}", "#discipline", "#mindset"]
+   }
 
-    else:
-        return prefix + f"{topic.capitalize()} determines your direction. Choose wisely."
 
 
 @app.route("/")
@@ -43,13 +59,7 @@ def generate():
     tone = data.get("tone", "default")
 
     script = generate_script(topic, length, tone)
-
-    return jsonify({
-        "script": script,
-        "topic": topic,
-        "length": length,
-        "tone": tone
-    })
+    return jsonify(script)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=8080)
