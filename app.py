@@ -13,7 +13,6 @@ def generate_script(topic, length, tone):
 
     topic_cap = topic.capitalize()
 
-    # Scroll stopper hooks
     hook_bank = {
         "aggressive": [
             "Stop lying to yourself.",
@@ -43,37 +42,35 @@ def generate_script(topic, length, tone):
 
     selected_hook = random.choice(hook_bank.get(tone, ["Listen carefully."]))
 
-    # Identity trigger
     identity_triggers = [
         f"If you care about {topic},",
-        f"If you truly want success in {topic},",
         f"If you're serious about improving {topic},",
-        f"If you're tired of failing in {topic},"
+        f"If you truly want success in {topic},",
+        f"If you're tired of staying average in {topic},"
     ]
 
     identity = random.choice(identity_triggers)
 
-    # Emotional tension
+    # Stronger emotional tension
     tension_bank = [
-        "your habits are exposing you.",
-        "your discipline is inconsistent.",
-        "your comfort zone is winning.",
-        "your actions don’t match your goals."
+        "your actions don’t match your goals.",
+        "you keep choosing comfort over growth.",
+        "you say one thing but do another.",
+        "you avoid what matters most.",
+        "your habits are exposing you."
     ]
 
     tension = random.choice(tension_bank)
 
-    # Resolution
     resolution_bank = [
         "Growth begins when discomfort becomes normal.",
-        "Discipline decides your future.",
         "Consistency beats motivation every time.",
+        "Discipline decides your future.",
         "Your identity shapes your destiny."
     ]
 
     resolution = random.choice(resolution_bank)
 
-    # CTA + loop style ending
     cta_bank = [
         "Fix it today.",
         "Start acting differently.",
@@ -90,6 +87,13 @@ def generate_script(topic, length, tone):
     else:
         full_script = f"{selected_hook} {identity} {tension} {resolution} {cta} Read that again."
 
+    hashtags = list(set([
+        f"#{topic.lower()}",
+        "#mindset",
+        "#growth",
+        "#discipline"
+    ]))
+
     return {
         "hook": selected_hook,
         "identity": identity,
@@ -97,8 +101,9 @@ def generate_script(topic, length, tone):
         "resolution": resolution,
         "cta": cta,
         "full_script": full_script,
-        "hashtags": [f"#{topic.lower()}", "#mindset", "#discipline", "#growth"]
+        "hashtags": hashtags
     }
+
 
 
 
