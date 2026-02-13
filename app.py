@@ -86,7 +86,7 @@ def generate_script(topic, length, tone, intensity):
     ])
 
 
-
+selected_hook = random.choice(hooks[intensity])
     # ---------- SCRIPT STRUCTURE ----------
     if length == "short":
         full_script = f"{selected_hook} {resolution} {cta}"
