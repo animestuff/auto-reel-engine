@@ -40,12 +40,13 @@ def generate_script(topic, length, tone, intensity):
             "Elite standards create elite results."
         ],
         "viral": [
-            "Stop lying to yourself.",
-            "This is why you're stuck.",
-            "Nobody wants to admit this.",
-            "You're avoiding the real problem.",
-            "Wake up."
-        ]
+            "Stop lying to yourself. You already know the truth.",
+            "Nobody wants to admit this — but you need to hear it.",
+            "You're not stuck. You're avoiding growth.",
+            "This isn’t motivation. It’s reality.",
+            "You don’t lack discipline. You lack standards."
+       ],
+
     }
 
      # INTENSITY MODIFIER
@@ -67,22 +68,25 @@ def generate_script(topic, length, tone, intensity):
         resolution = f"{topic_cap} shapes your future."
 
     # ---------- CTA ----------
-    if intensity == "viral":
-        cta = "Decide who you are."
-    else:
+     if intensity == "viral":
         cta = random.choice([
-            "Fix it today.",
-            "Start acting differently.",
-            "Decide who you want to become."
-        ])
+            "Decide who you are.",
+            "Prove it.",
+            "Choose better.",
+            "Or stay average.",
+            "Now act."
+    ])
+
 
     # ---------- LOOP LINE ----------
-    loop_line = random.choice([
+     loop_line = random.choice([
         "Read that again.",
         "Let that sink in.",
-        "Think about that.",
-        "Now ask yourself why."
-    ])
+        "Now ask yourself why.",
+        "You felt that.",
+        "Be honest."
+])
+
 
     # ---------- SCRIPT STRUCTURE ----------
     if length == "short":
