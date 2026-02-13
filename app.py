@@ -67,7 +67,7 @@ def generate_script(topic, length, tone, intensity):
         tension = "you avoid what matters most."
         resolution = f"{topic_cap} shapes your future."
         
-    # -------- CTA --------
+    # ---------- CTA ----------
     if intensity == "viral":
         cta = "Decide who you are."
     else:
@@ -77,6 +77,9 @@ def generate_script(topic, length, tone, intensity):
             "Decide who you want to become."
         ])
 
+    # ---------- SELECT HOOK ----------
+    selected_hook = random.choice(hooks[intensity])
+
     # ---------- LOOP LINE ----------
     loop_line = random.choice([
         "Read that again.",
@@ -85,9 +88,6 @@ def generate_script(topic, length, tone, intensity):
         "Now ask yourself why."
     ])
 
-    # ---------- SELECT HOOK ----------
-    selected_hook = random.choice(hooks[intensity])
-
     # ---------- SCRIPT STRUCTURE ----------
     if length == "short":
         full_script = f"{selected_hook} {resolution} {cta}"
@@ -95,8 +95,9 @@ def generate_script(topic, length, tone, intensity):
     elif length == "medium":
         full_script = f"{selected_hook} {identity} {tension} {resolution} {cta} {loop_line}"
 
-    else:  # long
+    else:
         full_script = f"{selected_hook} {identity} {tension} {resolution} {cta} {loop_line}"
+
 
 
     hashtags = list(set([
