@@ -48,26 +48,23 @@ def generate_script(topic, length, tone, intensity):
         ]
     }
 
-    # Force viral tone if intensity is viral
+     # INTENSITY MODIFIER
     if intensity == "viral":
-        tone = "viral"
-
-    selected_hook = random.choice(hook_bank.get(tone, hook_bank["dark"]))
-
-    # ---------- IDENTITY ----------
-    identity = f"If you care about {topic},"
-
-    # ---------- TENSION ----------
-    if intensity == "viral":
-        tension = f"You say you want {topic}, but your actions say otherwise."
-    else:
-        tension = "your actions don’t match your goals."
-
-    # ---------- RESOLUTION ----------
-    if intensity == "viral":
-        resolution = f"{topic_cap} doesn't reward comfort."
-    else:
-        resolution = f"{topic_cap} decides your future."
+         identity = f"If you care about {topic},"
+         tension = "you say you want it, but your actions say otherwise."
+         resolution = f"{topic_cap} doesn't reward comfort."
+    elif intensity == "high":
+         identity = f"If you're serious about {topic},"
+         tension = "your habits are exposing you."
+         resolution = f"{topic_cap} decides your future."
+    elif intensity == "low":
+         identity = f"If you're working on {topic},"
+         tension = "progress feels slow sometimes."
+         resolution = f"Small consistency builds real results."
+    else:  # medium/default
+        identity = f"If you care about {topic},"
+        tension = "you avoid what matters most."
+        resolution = f"{topic_cap} shapes your future."
 
     # ---------- CTA ----------
     if intensity == "viral":
