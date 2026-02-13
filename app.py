@@ -51,9 +51,10 @@ def generate_script(topic, length, tone, intensity):
 
      # INTENSITY MODIFIER
     if intensity == "viral":
-         identity = f"If you care about {topic},"
-         tension = "you say you want it, but your actions say otherwise."
-         resolution = f"{topic_cap} doesn't reward comfort."
+        identity = f"If you say {topic} matters,"
+        tension = "your daily behavior is proving otherwise."
+        resolution = f"{topic_cap} is earned in silence, not declared in public."
+
     elif intensity == "high":
          identity = f"If you're serious about {topic},"
          tension = "your habits are exposing you."
