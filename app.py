@@ -18,32 +18,35 @@ def generate_script(topic, length, tone):
     else:
         prefix = ""
 
-   if length == "short":
-       hook = prefix + f"{topic.capitalize()} shapes your future."
-       body = "Your habits decide your results."
-       cta = "Act now."
-   elif length == "medium":
-       hook = prefix + f"You say you want success in {topic}."
-       body = "But your habits say otherwise. Discipline creates results."
-       cta = "Fix your focus."
-   elif length == "long":
-       hook = prefix + f"Here’s the uncomfortable truth."
-       body = f"Most people blame {topic} for their failures. But growth begins when you stop avoiding discomfort."
-       cta = "Master your habits."
-   else:
-       hook = prefix + f"{topic.capitalize()} determines your direction."
-       body = "Choose wisely."
-       cta = "Start today."
+    if length == "short":
+        hook = prefix + f"{topic.capitalize()} shapes your future."
+        body = "Your habits decide your results."
+        cta = "Act now."
 
-   full_script = f"{hook} {body} {cta}"
+    elif length == "medium":
+        hook = prefix + f"You say you want success in {topic}."
+        body = "But your habits say otherwise. Discipline creates results."
+        cta = "Fix your focus."
 
-   return {
-     "hook": hook,
-     "body": body,
-     "cta": cta,
-     "full_script": full_script,
-     "hashtags": [f"#{topic}", "#discipline", "#mindset"]
-   }
+    elif length == "long":
+        hook = prefix + "Here’s the uncomfortable truth."
+        body = f"Most people blame {topic} for their failures. But growth begins when you stop avoiding discomfort."
+        cta = "Master your habits."
+
+    else:
+        hook = prefix + f"{topic.capitalize()} determines your direction."
+        body = "Choose wisely."
+        cta = "Start today."
+
+    full_script = f"{hook} {body} {cta}"
+
+    return {
+        "hook": hook,
+        "body": body,
+        "cta": cta,
+        "full_script": full_script,
+        "hashtags": [f"#{topic}", "#discipline", "#mindset"]
+    }
 
 
 
