@@ -115,14 +115,14 @@ def home():
 @app.route("/generate", methods=["POST"])
 def generate():
     data = request.json
+
     topic = data.get("topic", "success")
     length = data.get("length", "short")
     tone = data.get("tone", "default")
     intensity = data.get("intensity", "medium")
-   
 
+    script = generate_script(topic, length, tone, intensity)
 
-   script = generate_script(topic, length, tone, intensity)
     return jsonify(script)
 
 if __name__ == "__main__":
