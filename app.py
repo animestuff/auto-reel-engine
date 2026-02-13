@@ -9,112 +9,166 @@ CORS(app)
 import random
 
 def generate_script(topic, length, tone, intensity):
-    import random
 
     topic_cap = topic.capitalize()
 
-    # ---------- HOOK BANK ----------
-    hook_bank = {
-        "aggressive": [
-            "Stop lying to yourself.",
-            "Wake up.",
-            "Enough excuses.",
-            "This is your reality check."
-        ],
-        "calm": [
-            "Let’s be honest.",
-            "Pause for a second.",
-            "Think about this.",
-            "Consider this carefully."
-        ],
-        "dark": [
-            "Here’s the uncomfortable truth.",
-            "Nobody wants to admit this.",
-            "This is why you’re stuck.",
-            "Let’s be brutally honest."
-        ],
-        "luxury": [
-            "Top 1% think differently.",
-            "High performers understand this.",
-            "Winners move differently.",
-            "Elite standards create elite results."
-        ],
-        "viral": [
-            "Stop lying to yourself. You already know the truth.",
-            "Nobody wants to admit this — but you need to hear it.",
-            "You're not stuck. You're avoiding growth.",
-            "This isn’t motivation. It’s reality.",
-            "You don’t lack discipline. You lack standards."
-       ],
+    # ==================================================
+    # EMOTION FOUNDATION (Human, lived experience)
+    # ==================================================
+
+    emotion_engine = {
+
+        "joy": {
+            "identity": f"When {topic} finally starts working,",
+            "tension": "you realize it was never about motivation.",
+            "resolution": f"{topic_cap} was about standards."
+        },
+
+        "sadness": {
+            "identity": f"When you fail at {topic},",
+            "tension": "it hits deeper than you admit.",
+            "resolution": f"{topic_cap} forces you to rebuild quietly."
+        },
+
+        "anger": {
+            "identity": f"If you're frustrated with your {topic},",
+            "tension": "that frustration is telling you something.",
+            "resolution": f"{topic_cap} doesn't reward half effort."
+        },
+
+        "fear": {
+            "identity": f"If {topic} scares you,",
+            "tension": "it's because growth requires loss.",
+            "resolution": f"{topic_cap} demands a different version of you."
+        },
+
+        "disgust": {
+            "identity": f"If you're disappointed in your effort around {topic},",
+            "tension": "that's self-awareness waking up.",
+            "resolution": f"{topic_cap} changes when standards change."
+        },
+
+        "anticipation": {
+            "identity": f"If you feel something bigger waiting in {topic},",
+            "tension": "that pull isn't random.",
+            "resolution": f"{topic_cap} responds to preparation."
+        },
+
+        "broken": {
+            "identity": f"When {topic} feels impossible,",
+            "tension": "usually you're fighting yourself, not the goal.",
+            "resolution": f"{topic_cap} starts when excuses stop."
+        },
+
+        "admiration": {
+            "identity": f"When you admire someone strong in {topic},",
+            "tension": "you're seeing who you could become.",
+            "resolution": f"{topic_cap} belongs to the disciplined."
+        }
 
     }
 
-     # INTENSITY MODIFIER
-    if intensity == "viral":
-        identity = f"If you say {topic} matters,"
-        tension = "your daily behavior is proving otherwise."
-        resolution = f"{topic_cap} is earned in silence, not declared in public."
+    selected_emotion = random.choice(list(emotion_engine.keys()))
+    emotion_block = emotion_engine[selected_emotion]
+
+    identity = emotion_block["identity"]
+    tension = emotion_block["tension"]
+    resolution = emotion_block["resolution"]
+
+    # ==================================================
+    # INTENSITY LAYER (Emotional force)
+    # ==================================================
+
+    if intensity == "low":
+        tension += " And that’s okay."
+        cta = "Take one small step."
+
+    elif intensity == "medium":
+        tension += " You already know it."
+        cta = "Be consistent."
+
     elif intensity == "high":
-         identity = f"If you're serious about {topic},"
-         tension = "your habits are exposing you."
-         resolution = f"{topic_cap} decides your future."
-    elif intensity == "low":
-         identity = f"If you're working on {topic},"
-         tension = "progress feels slow sometimes."
-         resolution = f"Small consistency builds real results."
-    else:  # medium/default
-        identity = f"If you care about {topic},"
-        tension = "you avoid what matters most."
-        resolution = f"{topic_cap} shapes your future."
-        
-    # ---------- CTA ----------
-    if intensity == "viral":
+        tension += " Stop pretending you don't see it."
+        cta = "Fix it now."
+
+    else:  # extreme
+        tension += " You’re not confused. You’re avoiding it."
         cta = "Decide who you are."
-    else:
-        cta = random.choice([
-            "Fix it today.",
-            "Start acting differently.",
-            "Decide who you want to become."
+
+    # ==================================================
+    # TONE LAYER (Voice personality)
+    # ==================================================
+
+    if tone == "brutal":
+        hook = random.choice([
+            "Let’s stop lying to ourselves.",
+            "You don’t need motivation. You need truth.",
+            "Nobody owes you softness."
         ])
 
-    # ---------- SELECT HOOK ----------
-    # Fallback safety
-    if tone not in hook_bank:
-        tone = "dark"
+    elif tone == "calm":
+        hook = random.choice([
+            "Let’s talk honestly.",
+            "Pause for a moment.",
+            "Think about this carefully."
+        ])
 
-    selected_hook = random.choice(hook_bank[tone])
+    elif tone == "elite":
+        hook = random.choice([
+            "High performers understand this.",
+            "The disciplined see this early.",
+            "Winners move differently for a reason."
+        ])
 
+    elif tone == "criminal":
+        hook = random.choice([
+            "The streets teach this fast.",
+            "Pressure exposes who you are.",
+            "Survival doesn't care about excuses."
+        ])
 
+    else:  # adult
+        hook = random.choice([
+            "After enough life, you see patterns.",
+            "Experience teaches this eventually.",
+            "Nobody explains this early enough."
+        ])
 
-    # ---------- LOOP LINE ----------
+    # ==================================================
+    # LOOP TRIGGER (Replay value)
+    # ==================================================
+
     loop_line = random.choice([
         "Read that again.",
-        "Let that sink in.",
-        "Think about that.",
-        "Now ask yourself why."
+        "Let that settle.",
+        "Be honest with yourself.",
+        "Sit with that for a second."
     ])
 
-    # ---------- SCRIPT STRUCTURE ----------
+    # ==================================================
+    # STRUCTURE (Natural rhythm)
+    # ==================================================
+
     if length == "short":
-        full_script = f"{selected_hook} {resolution} {cta}"
+        full_script = f"{hook} {resolution} {cta}"
 
     elif length == "medium":
-        full_script = f"{selected_hook} {identity} {tension} {resolution} {cta} {loop_line}"
+        full_script = f"{hook} {identity} {tension} {resolution} {cta} {loop_line}"
 
     else:
-        full_script = f"{selected_hook} {identity} {tension} {resolution} {cta} {loop_line}"
-
-
+        full_script = f"{hook} {identity} {tension} {resolution} {cta} {loop_line}"
 
     hashtags = list(set([
         f"#{topic.lower()}",
         "#mindset",
         "#growth",
+        "#selfawareness",
         "#discipline"
     ]))
 
     return {
-        "hook": selected_hook,
+        "emotion": selected_emotion,
+        "hook": hook,
         "identity": identity,
         "tension": tension,
         "resolution": resolution,
@@ -122,6 +176,7 @@ def generate_script(topic, length, tone, intensity):
         "full_script": full_script,
         "hashtags": hashtags
     }
+
 
 
 @app.route("/")
