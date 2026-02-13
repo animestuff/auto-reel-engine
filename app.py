@@ -37,7 +37,15 @@ def generate_script(topic, length, tone, intensity):
             "High performers understand this.",
             "Winners move differently.",
             "Elite mindset only."
-        ]
+        ],
+        "viral": [
+            "Stop lying to yourself.",
+            "This is why you're stuck.",
+            "Nobody wants to admit this.",
+            "You're avoiding the real problem.",
+            "Wake up."
+       ],
+
     }
 
     selected_hook = random.choice(hook_bank.get(tone, ["Listen carefully."]))
