@@ -9,73 +9,63 @@ CORS(app)
 import random
 
 def generate_script(topic, length, tone):
+    import random
 
     tone = tone.lower()
 
     hooks = {
         "aggressive": [
-            "Listen carefully.",
             "Stop lying to yourself.",
-            "This is your wake-up call.",
-            "Enough excuses."
+            "Wake up.",
+            "No more excuses.",
+            "Listen carefully."
         ],
         "calm": [
+            "Let’s be honest.",
             "Think about this.",
             "Pause for a second.",
-            "Let’s reflect.",
-            "Consider this carefully."
+            "Consider this."
         ],
         "dark": [
             "Here’s the uncomfortable truth.",
-            "Nobody wants to admit this.",
-            "This is why you’re stuck.",
+            "Nobody talks about this.",
+            "This is why you're stuck.",
             "Let’s be brutally honest."
         ],
         "luxury": [
             "High performers understand this.",
+            "Successful people know this.",
             "Top 1% think differently.",
-            "Elite mindset only.",
-            "Winners operate like this."
+            "Winners move differently."
         ]
     }
 
-    default_hooks = ["Let’s talk about this."]
-    selected_hook = random.choice(hooks.get(tone, default_hooks))
-
-    topic = topic.capitalize()
+    selected_hook = random.choice(hooks.get(tone, ["Listen carefully."]))
 
     if length == "short":
-        body = f"{topic} shapes your future. Your habits decide your results."
+        truth = f"{topic.capitalize()} shapes your future."
+        tension = "Your habits decide your results."
         cta = "Act now."
 
     elif length == "medium":
-        body = f"You say you want success in {topic}. But your habits say otherwise. Discipline creates results."
+        truth = f"You say you want success in {topic}."
+        tension = "But your habits say otherwise."
         cta = "Fix your focus."
 
-    elif length == "long":
-        body = f"Most people blame {topic} for their failures. But growth begins when you stop avoiding discomfort."
+    else:  # long
+        truth = f"Most people blame {topic} for their failures."
+        tension = "But growth begins when you stop avoiding discomfort."
         cta = "Master your habits."
 
-    else:
-        body = f"{topic} determines your direction. Choose wisely."
-        cta = "Start today."
-
-    full_script = f"{selected_hook} {body} {cta}"
-
-    hashtag_map = {
-        "discipline": ["#discipline", "#selfcontrol", "#growth", "#mindset"],
-        "success": ["#success", "#winning", "#growth", "#mindset"],
-        "focus": ["#focus", "#clarity", "#discipline", "#productivity"]
-    }
-
-    hashtags = hashtag_map.get(topic.lower(), [f"#{topic.lower()}", "#mindset", "#growth"])
+    full_script = f"{selected_hook} {truth} {tension} {cta}"
 
     return {
         "hook": selected_hook,
-        "body": body,
+        "truth": truth,
+        "tension": tension,
         "cta": cta,
         "full_script": full_script,
-        "hashtags": hashtags
+        "hashtags": [f"#{topic}", "#mindset", "#discipline"]
     }
 
 
